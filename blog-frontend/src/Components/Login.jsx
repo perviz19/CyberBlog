@@ -59,11 +59,10 @@ function Login() {
 
             )
             .catch(error => {
-                console.log(error)
+                console.log(error);
                 setError('Username or Password is wrong!');
             });
     };
-
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -79,6 +78,7 @@ function Login() {
                         <input
                             placeholder="Enter Username"
                             type="text"
+                            required = 'true'
                             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -89,6 +89,7 @@ function Login() {
                         <input
                             placeholder="Enter Password"
                             type={showPassword ? "text" : "password"}
+                            required = 'true'
                             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                             onChange={(e) => setPassword(e.target.value)}
                         />

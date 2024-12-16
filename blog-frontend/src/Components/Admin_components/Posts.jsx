@@ -117,6 +117,8 @@ function Posts() {
 
             if (response.status === 201) {
                 alert('Post created successfully!');
+                closeNewPostModal();
+                fetchPosts(currentPage)
             } else {
                 alert(`Failed to create post: ${response.statusText}`);
             }

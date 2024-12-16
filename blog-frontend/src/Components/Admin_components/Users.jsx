@@ -54,7 +54,7 @@ function Users() {
             <main className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800">User List</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="flex flex-col md:flex-row gap-4">
                     {responseData.map((user) => (
                         <div
                             key={user._id}

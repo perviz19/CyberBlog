@@ -1,8 +1,8 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Posts from "./Admin_components/Posts";
 import Users from "./Admin_components/Users";
-import { FiUser } from "react-icons/fi";
+import { FiUser, FiMenu, FiX } from "react-icons/fi";
 import Sidebar from "./Admin_components/SideBar";
 import Dashboard from "./Admin_components/Dashboard";
 import { checkTokenValidity } from '../utils/checktoken';
@@ -44,6 +44,11 @@ const AdminPanel = () => {
         handleToken();
     }, [currentPage]);
 
+    useEffect(() => {
+        setIsSidebarOpen(!isSidebarOpen)
+    },[currentPage]);
+
+
     if (isLoading) {
         return <div className="text-center text-xl mt-20">Loading...</div>;
     }
@@ -69,6 +74,7 @@ const AdminPanel = () => {
             {/* Sidebar */}
 
             <Sidebar
+                isSidebarOpen={isSidebarOpen}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
                 token={token}
@@ -78,7 +84,19 @@ const AdminPanel = () => {
             <div className="flex-1 flex flex-col ml-0 md:ml-64 transition-all duration-300">
                 {/* Header */}
                 <header className="bg-gradient-to-r from-blue-400 to-purple-400 shadow-lg text-white flex items-center justify-between px-6 py-4 z-10">
-                    <h1 className="text-xl font-bold capitalize">{currentPage}</h1>
+                    {/* Hamburger Button */}
+                    <button
+                        className="md:hidden text-white text-2xl mr-4"
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    >
+                        {isSidebarOpen ? <FiX /> : <FiMenu />}
+                    </button>
+
+
+                    {/* Page Title */}
+                    <h1 className="text-xl font-bold capitalize flex-1">{currentPage}</h1>
+
+                    {/* User Info */}
                     <div className="flex items-center space-x-3">
                         <span className="bg-gray-300 p-3 rounded-full flex items-center justify-center">
                             <FiUser />
