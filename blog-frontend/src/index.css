@@ -1,0 +1,6 @@
+@import './Css/AdminPanel.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
